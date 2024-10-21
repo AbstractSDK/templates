@@ -10,25 +10,15 @@ include_app = { prompt = "Include App Module", default = true, type = "bool" }
 include_adapter = { prompt = "Include Adapter Module", default = true, type = "bool" }
 include_standalone = { prompt = "Include Standalone Module", default = true, type = "bool" }
 
-[placeholders.include_ibc]
-type = "bool"
-prompt = """The full template includes IBC related functions.
-
-Would you like to generate the minimal template?"""
-default = false
-
-
 [conditional.'include_app'.placeholders]
 app_name = { prompt = "Enter App Name", default = "my_app", type = "string" }
+with_ibc = { prompt = "Would you like to include IBC template in the app?", default = false, type = "bool" }
 
 [conditional.'include_adapter'.placeholders]
 adapter_name = { prompt = "Enter Adapter Name", default = "my_adapter", type = "string" }
 
 [conditional.'include_standalone'.placeholders]
 standalone_name = { prompt = "Enter Standalone Name", default = "my_standalone", type = "string" }
-
-[conditional.'.include_ibc']
-ignore = ["contracts/{{app_name}}/src/ibc"]
 
 # Ignore files if not included
 [conditional.'!include_app']
@@ -37,3 +27,6 @@ ignore = ["contracts/{{app_name}}"]
 ignore = ["contracts/{{adapter_name}}"]
 [conditional.'!include_standalone']
 ignore = ["contracts/{{standalone_name}}"]
+
+[conditional.'!with_ibc']
+ignore = ["contracts/{{app_name}}/src/ibc"]

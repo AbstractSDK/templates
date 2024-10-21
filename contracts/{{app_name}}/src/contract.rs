@@ -23,8 +23,10 @@ const APP: {{app_name | upper_camel_case}} = {{app_name | upper_camel_case}}::ne
     .with_execute(handlers::execute_handler)
     .with_query(handlers::query_handler)
     .with_migrate(handlers::migrate_handler)
-    .with_dependencies(&[])
-    .with_replies(&[(INSTANTIATE_REPLY_ID, replies::instantiate_reply)]);
+    .with_replies(&[(INSTANTIATE_REPLY_ID, replies::instantiate_reply)]){% if with_ibc %}
+    .with_ibc_callback(crate::ibc::ibc_callback)
+    .with_module_ibc(crate::ibc::receive_module_ibc){% endif %}
+    .with_dependencies(&[]);
 
 // Export handlers
 #[cfg(feature = "export")]

@@ -103,6 +103,7 @@ fn set_status() -> anyhow::Result<()> {
                 status: first_status.clone(),
             },
         }),
+        vec![]
     )?;
 
     let new_account = env
@@ -119,6 +120,7 @@ fn set_status() -> anyhow::Result<()> {
                 status: second_status.clone(),
             },
         }),
+        vec![]
     )?;
 
     let status_response = adapter.status(adapter.account().id()?)?;

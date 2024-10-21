@@ -1,23 +1,19 @@
 use abstract_app::{
-    objects::TruncatedChainId,
     sdk::AbstractResponse,
     std::ibc::{Callback, IbcResult},
 };
-use cosmwasm_std::{from_json, DepsMut, Env};
+use cosmwasm_std::{DepsMut, Env};
 
-use crate::{
-    contract::{App, AppResult},
-    handlers::execute::ping_pong,
-    msg::{BlockHeightResponse, IbcCallbackMsg},
-    state::{LOSSES, WINS},
+use crate::contract::{
+    {{app_name | upper_camel_case}}, {{app_name | upper_camel_case}}Result
 };
 
 pub fn ibc_callback(
-    deps: DepsMut,
-    env: Env,
-    module: App,
-    callback: Callback,
-    result: IbcResult,
-) -> AppResult {
+    _deps: DepsMut,
+    _env: Env,
+    module: {{app_name | upper_camel_case}},
+    _callback: Callback,
+    _result: IbcResult,
+) -> {{app_name | upper_camel_case}}Result {
     Ok(module.response("callback"))
 }

@@ -10,7 +10,7 @@
 use {{standalone_name | snake_case}}::{{standalone_name | shouty_snake_case}}_ID;
 
 use abstract_client::{AbstractClient, Publisher};
-use abstract_standalone::{objects::namespace::Namespace, std::standalone};
+use abstract_standalone::objects::namespace::Namespace;
 use cw_orch::{anyhow, prelude::*, tokio::runtime::Runtime};
 use {{standalone_name | snake_case}}::{msg::{{standalone_name | upper_camel_case}}InstantiateMsg, {{standalone_name | upper_camel_case}}Interface};
 
@@ -55,10 +55,6 @@ fn main() -> anyhow::Result<()> {
     // Installs the standalone on the Account
     let standalone = account.install_standalone::<{{standalone_name | upper_camel_case}}Interface<_>>(
         &{{standalone_name | upper_camel_case}}InstantiateMsg {
-            base: standalone::StandaloneInstantiateMsg {
-                ans_host_address: abstract_client.name_service().addr_str()?,
-                registry_address: abstract_client.registry().addr_str()?,
-            },
             count: 0,
         },
         &[],
