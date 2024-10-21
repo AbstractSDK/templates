@@ -11,8 +11,9 @@ include_adapter = { prompt = "Include Adapter Module", default = true, type = "b
 include_standalone = { prompt = "Include Standalone Module", default = true, type = "bool" }
 
 [conditional.'include_app'.placeholders]
-app_name = { prompt = "Enter App Name", default = "my_app", type = "string" }
+# App can have IBC
 with_ibc = { prompt = "Would you like to include IBC template in the app?", default = false, type = "bool" }
+app_name = { prompt = "Enter App Name", default = "my_app", type = "string" }
 
 [conditional.'include_adapter'.placeholders]
 adapter_name = { prompt = "Enter Adapter Name", default = "my_adapter", type = "string" }
