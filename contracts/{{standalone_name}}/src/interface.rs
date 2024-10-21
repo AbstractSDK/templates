@@ -1,5 +1,7 @@
 use cw_orch::contract::{interface_traits::InstantiableContract, Contract};
 use cw_orch::prelude::*;
+use abstract_standalone::objects::dependency::StaticDependency;
+use abstract_standalone::traits::Dependencies;
 
 use crate::{
     msg::*, {{standalone_name | shouty_snake_case}}
@@ -23,6 +25,10 @@ impl<Chain: cw_orch::environment::CwEnv> abstract_interface::RegisteredModule
     for {{standalone_name | upper_camel_case}}Interface<Chain>
 {
     type InitMsg = <{{standalone_name | upper_camel_case}}Interface<Chain> as InstantiableContract>::InstantiateMsg;
+
+    fn dependencies<'a>() -> &'a [StaticDependency] {
+        {{standalone_name | shouty_snake_case}}.dependencies()
+    }
 
     fn module_id<'a>() -> &'a str {
         {{standalone_name | shouty_snake_case}}.module_id()

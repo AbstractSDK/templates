@@ -22,4 +22,4 @@ jobs:
       - name: cargo clippy
         run: |
           CARGO_GENERATE_TEST_CMD="cargo clippy --all-features -- -D warnings" \
-          cargo generate -d include_app=true -d include_adapter=true -d include_standalone=true -d app_name=my_app -d adapter_name=my_adapter -d standalone_name=my_standalone --test
+          cargo generate -d include_app=true -d include_adapter=true -d include_standalone=true -d app_name=my_app -d adapter_name=my_adapter -d standalone_name=my_standalone -d with_ibc=true --test

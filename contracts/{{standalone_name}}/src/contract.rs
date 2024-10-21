@@ -1,4 +1,4 @@
-use abstract_standalone::sdk::{AbstractResponse, AbstractSdkError, IbcInterface};
+use abstract_standalone::{std::standalone::StandaloneInstantiateMsg,sdk::{AbstractResponse, AbstractSdkError, IbcInterface}};
 use cosmwasm_std::{to_json_binary, Binary, Deps, DepsMut, Env, MessageInfo, Reply, StdResult};
 
 use crate::{
@@ -25,7 +25,7 @@ pub fn instantiate(
 
     // Init standalone as module
     let is_migratable = true;
-    {{standalone_name | shouty_snake_case}}.instantiate(deps.branch(), info, msg.base, is_migratable)?;
+    {{standalone_name | shouty_snake_case}}.instantiate(deps.branch(), info, StandaloneInstantiateMsg {}, is_migratable)?;
 
     Ok({{standalone_name | shouty_snake_case}}.response("init"))
 }
@@ -33,17 +33,18 @@ pub fn instantiate(
 #[cfg_attr(feature = "export", cosmwasm_std::entry_point)]
 pub fn execute(
     deps: DepsMut,
-    _env: Env,
+    env: Env,
     info: MessageInfo,
     msg: {{standalone_name | upper_camel_case}}ExecuteMsg,
 ) -> {{standalone_name | upper_camel_case}}Result {
     let standalone = {{standalone_name | shouty_snake_case}};
     match msg {
-        {{standalone_name | upper_camel_case}}ExecuteMsg::UpdateConfig {} => update_config(deps, info, standalone),
+        {{standalone_name | upper_camel_case}}ExecuteMsg::UpdateConfig {} => update_config(deps, env, info, standalone),
         {{standalone_name | upper_camel_case}}ExecuteMsg::Increment {} => increment(deps, standalone),
-        {{standalone_name | upper_camel_case}}ExecuteMsg::Reset { count } => reset(deps, info, count, standalone),
+        {{standalone_name | upper_camel_case}}ExecuteMsg::Reset { count } => reset(deps, env, info, count, standalone),
         {{standalone_name | upper_camel_case}}ExecuteMsg::IbcCallback(msg) => {
-            let ibc_client = {{standalone_name | shouty_snake_case}}.ibc_client(deps.as_ref());
+            let binding = {{standalone_name | shouty_snake_case}};
+            let ibc_client = binding.ibc_client(deps.as_ref(), &env);
 
             let ibc_client_addr = ibc_client.module_address()?;
             if info.sender.ne(&ibc_client_addr) {
@@ -66,10 +67,10 @@ pub fn execute(
 }
 
 /// Update the configuration of the standalone
-fn update_config(deps: DepsMut, info: MessageInfo, module: {{standalone_name | upper_camel_case}}) -> {{standalone_name | upper_camel_case}}Result {
+fn update_config(deps: DepsMut, env: Env, info: MessageInfo, module: {{standalone_name | upper_camel_case}}) -> {{standalone_name | upper_camel_case}}Result {
     {{standalone_name | shouty_snake_case}}
         .admin
-        .assert_admin(deps.as_ref(), &info.sender)?;
+        .assert_admin(deps.as_ref(), &env, &info.sender)?;
     let mut _config = CONFIG.load(deps.storage)?;
 
     Ok(module.response("update_config"))
@@ -83,13 +84,14 @@ fn increment(deps: DepsMut, module: {{standalone_name | upper_camel_case}}) -> {
 
 fn reset(
     deps: DepsMut,
+    env: Env,
     info: MessageInfo,
     count: i32,
     module: {{standalone_name | upper_camel_case}},
 ) -> {{standalone_name | upper_camel_case}}Result {
     {{standalone_name | shouty_snake_case}}
         .admin
-        .assert_admin(deps.as_ref(), &info.sender)?;
+        .assert_admin(deps.as_ref(), &env, &info.sender)?;
     COUNT.save(deps.storage, &count)?;
 
     Ok(module.response("reset"))
