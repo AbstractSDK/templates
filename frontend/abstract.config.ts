@@ -5,17 +5,19 @@ export default defineConfig({
   out: 'app/_generated/generated-abstract',
   contracts: [
     {
-      name: "{{app_name | snake_case}}", 
-      path: "../contracts/{{app_name | snake_case}}/schema/", 
-      namespace: "{{project-name | kebab_case}}", 
+      name: "{{app_name | snake_case}}",
+      path: "../contracts/{{app_name | snake_case}}/schema/",
+      namespace: "{{project-name | kebab_case}}",
       version: "0.1.0",
-      moduleType: "adapter",
+      moduleType: "app",
     }
   ],
   plugins: [
-    react(),
+    react({
+      disableAbstractAppFor: ['cw20-base']
+    }),
     vanilla({
-      enableAppstractAppFor: ['board']
+      enableAbstractAppFor: ['{{app_name | snake_case}}']
     }),
     registry({
       contracts: [{
