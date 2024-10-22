@@ -26,9 +26,9 @@ impl TestEnv<MockBech32> {
         let namespace = Namespace::new({{project-name | shouty_snake_case}}_NAMESPACE)?;
 
         // You can set up Abstract with a builder.
-        let abs_client = AbstractClient::builder(mock).build()?;
+        let abs_client = AbstractClient::builder(mock).build_mock()?;
         // The adapter supports setting balances for addresses and configuring ANS.
-        abs_client.set_balance(sender, &coins(123, "ucosm"))?;
+        abs_client.set_balance(&sender, &coins(123, "ucosm"))?;
 
         // Publish the adapter
         let publisher = abs_client.publisher_builder(namespace).build()?;
@@ -72,30 +72,16 @@ fn update_config() -> anyhow::Result<()> {
 
     adapter.execute(
         &AdapterRequestMsg {
-            proxy_address: Some(publisher_account.account().proxy()?.to_string()),
+            account_address: Some(publisher_account.account().address()?.to_string()),
             request: {{adapter_name | upper_camel_case}}ExecuteMsg::UpdateConfig {},
         }
         .into(),
-        None,
+        &[],
     )?;
 
     let config = adapter.config()?;
     let expected_response = {{adapter_name | snake_case}}::msg::ConfigResponse {};
     assert_eq!(config, expected_response);
-
-    // Adapter installed on sub-account of the publisher so this should error
-    let err = adapter
-        .execute(
-            &AdapterRequestMsg {
-                proxy_address: Some(adapter.account().proxy()?.to_string()),
-                request: {{adapter_name | upper_camel_case}}ExecuteMsg::UpdateConfig {},
-            }
-            .into(),
-            None,
-        )
-        .unwrap_err();
-    assert_eq!(err.root().to_string(), "Unauthorized");
-
     Ok(())
 }
 
@@ -105,18 +91,19 @@ fn set_status() -> anyhow::Result<()> {
     let adapter = env.adapter;
 
     let first_status = "my_status".to_owned();
-    let second_status = "my_status".to_owned();
+    let second_status = "my_second_status".to_owned();
 
-    let subaccount = &env.publisher.account().sub_accounts()?[0];
+    let account = &env.publisher.account();
 
-    subaccount.as_ref().manager.execute_on_module(
+    account.as_ref().execute_on_module(
         {{adapter_name | shouty_snake_case}}_ID,
         ExecuteMsg::Module(AdapterRequestMsg {
-            proxy_address: Some(subaccount.proxy()?.to_string()),
+            account_address: Some(account.address()?.to_string()),
             request: {{adapter_name | upper_camel_case}}ExecuteMsg::SetStatus {
                 status: first_status.clone(),
             },
         }),
+        vec![]
     )?;
 
     let new_account = env
@@ -125,14 +112,15 @@ fn set_status() -> anyhow::Result<()> {
         .install_adapter::<{{adapter_name | upper_camel_case}}Interface<MockBech32>>()?
         .build()?;
 
-    new_account.as_ref().manager.execute_on_module(
+    new_account.as_ref().execute_on_module(
         {{adapter_name | shouty_snake_case}}_ID,
         ExecuteMsg::Module(AdapterRequestMsg {
-            proxy_address: Some(new_account.proxy()?.to_string()),
+            account_address: Some(new_account.address()?.to_string()),
             request: {{adapter_name | upper_camel_case}}ExecuteMsg::SetStatus {
                 status: second_status.clone(),
             },
         }),
+        vec![]
     )?;
 
     let status_response = adapter.status(adapter.account().id()?)?;

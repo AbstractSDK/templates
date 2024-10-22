@@ -8,7 +8,7 @@ use {{standalone_name | snake_case}}::{
 };
 
 use abstract_client::{AbstractClient, Application, Environment};
-use abstract_standalone::{objects::namespace::Namespace, std::standalone};
+use abstract_standalone::{objects::namespace::Namespace};
 use cosmwasm_std::coins;
 // Use prelude to get all the necessary imports
 use cw_orch::{anyhow, prelude::*};
@@ -27,9 +27,9 @@ impl TestEnv<MockBech32> {
         let namespace = Namespace::new({{project-name | shouty_snake_case}}_NAMESPACE)?;
 
         // You can set up Abstract with a builder.
-        let abs_client = AbstractClient::builder(mock).build()?;
+        let abs_client = AbstractClient::builder(mock).build_mock()?;
         // The standalone supports setting balances for addresses and configuring ANS.
-        abs_client.set_balance(sender.clone(), &coins(123, "ucosm"))?;
+        abs_client.set_balance(&sender, &coins(123, "ucosm"))?;
 
         // Publish the standalone
         let publisher = abs_client.publisher_builder(namespace).build()?;
@@ -39,10 +39,6 @@ impl TestEnv<MockBech32> {
             .account()
             .install_standalone::<{{standalone_name | upper_camel_case}}Interface<_>>(
                 &{{standalone_name | upper_camel_case}}InstantiateMsg {
-                    base: standalone::StandaloneInstantiateMsg {
-                        ans_host_address: abs_client.name_service().addr_str()?,
-                        version_control_address: abs_client.version_control().addr_str()?,
-                    },
                     count: 0,
                 },
                 &[],

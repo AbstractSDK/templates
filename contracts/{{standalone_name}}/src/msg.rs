@@ -1,14 +1,11 @@
 use abstract_standalone::std::{
     ibc::{IbcResponseMsg, ModuleIbcMsg},
-    standalone,
 };
 use cosmwasm_schema::QueryResponses;
 
 /// Standalone instantiate message
 #[cosmwasm_schema::cw_serde]
 pub struct {{standalone_name | upper_camel_case}}InstantiateMsg {
-    // This field will get auto-filled by module factory
-    pub base: standalone::StandaloneInstantiateMsg,
     pub count: i32,
 }
 
