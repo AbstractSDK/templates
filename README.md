@@ -1,8 +1,8 @@
 # Abstract App Module Template
 
-The Abstract Module Template is a starting point for developing composable smart-contracts, or "Modules" on the Abstract platform. An App is instantiated for each Account individually and is migratable. Apps are allowed to perform actions on Abstract Accounts and can integrate with other Apps and Adapters installed on the Account. To learn more about Abstract Accounts, please see the [abstract accounts documentation](https://docs.abstract.money/3_framework/3_architecture.html). To read more about apps, please see the [app module documentation](https://docs.abstract.money/3_framework/6_module_types.html).
+The Abstract Module Template is a starting point for developing composable smart-contracts, or "Modules" on the Abstract platform. To learn more about Abstract Accounts, please see the [abstract accounts documentation](https://docs.abstract.money/3_framework/3_architecture.html). To read more about modules, please see the [module documentation](https://docs.abstract.money/3_framework/6_module_types.html).
 
-This template includes examples for both an app and adapter in a workspace.
+This template includes examples for both an app, adapter and standalone in a workspace.
 
 ## Getting Started
 
@@ -17,7 +17,7 @@ Learn more about the requirements for developing Abstract apps in the [getting s
 To get started, the following commands:
 
 ```shell
-cargo generate --git https://github.com/AbstractSDK/app-template.git
+cargo generate --git https://github.com/AbstractSDK/templates.git
 ```
 
 It will prompt Project Name(will be used for namespace), App Name and Adapter Name.
@@ -77,7 +77,6 @@ This should result in an artifacts directory being created in your project root.
 You can test the module using the different provided methods.
 
 1. **Integration testing:** We provide an integration testing setup in both contracts. The App tests can be found here [here](./contracts/app/tests/integration.rs). You can re-use the setup provided in this file to test different execution and query entry-points of your module. Once you are satisfied with the results you can try publishing it to a real chain.
-2. **Local Daemon (Optional):** Once you have confirmed that your module works as expected you can spin up a local node and deploy Abstract + your app onto the chain. You need [Docker](https://www.docker.com/) installed for this step. You can do this by running the [test-local](./contracts/app/examples/test-local.rs) example, which uses a locally running juno daemon to deploy to. You can setup local juno using `just juno-local` command. At this point you can also test your front-end with the contracts.
 
 Once testing is done you can attempt an actual deployment on test and mainnet.
 
@@ -85,7 +84,6 @@ Once testing is done you can attempt an actual deployment on test and mainnet.
 
 Before attempting to publish your app you need to add your mnemonic to the `.env` file. **Don't use a mnemonic that has mainnet funds for testing.**
 
-<!-- It's also assumed that you have an account and module namespace claimed with this account before publishing. You can read how to do that [here](https://docs.abstract.money/4_get_started/5_abstract_client.html). -->
 Select from a wide range of [supported chains](https://orchestrator.abstract.money/chains/index.html) before proceeding. Make sure you've some balance enough to pay gas for the transaction.
 
 You can now use `just publish CHAIN_ID` to run the [`examples/publish.rs`](./examples/publish.rs) script. The script will publish the app to the networks that you provided. Make sure you have enough funds in your wallet on the different networks you aim to publish on.
