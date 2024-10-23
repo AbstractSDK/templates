@@ -1,4 +1,4 @@
-# Abstract App Module Template
+# Abstract Module Template
 
 The Abstract Module Template is a starting point for developing composable smart-contracts, or "Modules" on the Abstract platform. To learn more about Abstract Accounts, please see the [abstract accounts documentation](https://docs.abstract.money/3_framework/3_architecture.html). To read more about modules, please see the [module documentation](https://docs.abstract.money/3_framework/6_module_types.html).
 
@@ -20,7 +20,8 @@ To get started, the following commands:
 cargo generate --git https://github.com/AbstractSDK/templates.git
 ```
 
-It will prompt Project Name(will be used for namespace), App Name and Adapter Name.
+It will prompt Project Name (will be used for namespace), App Name, Adapter Name and Standalone Name.
+It will also prompt for including IBC related code. You can do this if you aim to build an IBC-enabled application on an App module.
 
 ```shell
 cd {{project-name}}
