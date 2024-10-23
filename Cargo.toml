@@ -27,7 +27,10 @@ abstract-adapter = { version = "0.24.1-beta.2" }
 abstract-standalone = { version = "0.24.1-beta.2" }
 abstract-interface = { version = "0.24.1-beta.2" }
 abstract-client = { version = "0.24.1-beta.2" }
-cw-orch = { version = "0.25.1" }
+cw-orch = { version = "0.26.0" }
+{% if with_ibc %}
+cw-orch-interchain = { version = "0.7.0" }
+{% endif %}
 
 lazy_static = "1.4.0"
 const_format = "0.2.33"
