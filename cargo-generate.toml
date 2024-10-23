@@ -30,4 +30,7 @@ ignore = ["contracts/{{adapter_name}}"]
 ignore = ["contracts/{{standalone_name}}"]
 
 [conditional.'!with_ibc']
-ignore = ["contracts/{{app_name}}/src/ibc"]
+ignore = [
+    "contracts/{{app_name}}/src/ibc",
+    "contracts/{{app_name}}/tests/interchain_integration.rs",
+]
