@@ -13,7 +13,7 @@
     "generate:abstract": "abstract generate"
   },
   "dependencies": {
-    "@abstract-money/cli": "^1.1.0",
+    "@abstract-money/cli": "^1.2.0",
     "@abstract-money/core": "^3.0.0",
     "@abstract-money/provider-graz": "^7.0.0",
     "@abstract-money/react": "^2.0.0",
