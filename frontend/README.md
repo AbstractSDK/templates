@@ -76,8 +76,6 @@ Before running the code generation, follow these steps:
    This step is crucial as it creates the necessary schema files for the code
    generation process.
 
-   a. Verify that the schema file inside the path specified in step 2b is named
-   `module-schema.json`.
 
 2. After generating the module schema, update the `abstract.config.ts` file with
    the proper module name, namespace, and version. Here's how:
