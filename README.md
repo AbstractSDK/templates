@@ -17,7 +17,7 @@ Learn more about the requirements for developing Abstract apps in the [getting s
 To get started, the following commands:
 
 ```shell
-cargo generate --git https://github.com/AbstractSDK/app-template.git
+cargo generate --git https://github.com/AbstractSDK/templates.git
 ```
 
 It will prompt Project Name(will be used for namespace), App Name and Adapter Name.
