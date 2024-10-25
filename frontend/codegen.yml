@@ -1,0 +1,22 @@
+schema: "https://api.abstract.money/graphql" # This can be the API URL or the schema document
+# schema: "https://api.abstract.money/graphql"
+
+documents: ["./app/**/*.{tsx,ts}", "!./app/_generated/generated-graphql/**/*"]
+
+generates:
+  ./app/_generated/generated-graphql/:
+    preset: client
+    presetConfig:
+      gqlTagName: gql
+      immutableTypes: true
+    config:
+      immutableTypes: true
+      useTypeImports: true
+      scalars:
+        # Temporarily map to any, see DAT-16
+        JSON: any
+        Semver: string
+        Bech32Address: string
+        SafeInt: number
+
+ignoreNoDocuments: true
