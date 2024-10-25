@@ -4,7 +4,13 @@
 package_dir="cargo pkgid | awk -F '/' '{print \$NF}'| tr '#@' '/'"
 SCHEMA_OUT_DIR=$(echo "$PWD"/schema)
 
-for dir in contracts/*; do 
-    (cd "$dir" && out_dir="$SCHEMA_OUT_DIR/$(eval $package_dir)" \
-         && cargo schema && mkdir -p $out_dir && cp -r schema/* $out_dir )
+for dir in contracts/*; do
+    (cd "$dir" \
+      && out_dir="$SCHEMA_OUT_DIR/$(eval $package_dir)" \
+      && schema_dir="$dir/schema" \
+      && cargo schema \
+      && mkdir -p "schema/abstract" \
+      && cp "schema/module-schema.json" "schema/abstract" \
+      && mkdir -p $out_dir \
+      && cp -r schema/* $out_dir)
 done
