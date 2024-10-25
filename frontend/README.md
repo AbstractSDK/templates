@@ -39,33 +39,37 @@ Before you begin, ensure you have met the following requirements:
 ## Installation
 
 1. Clone the repository:
-   ```
-   git clone git@github.com:AbstractSDK/templates.git
-   ```
+ ```
+ git clone git@github.com:AbstractSDK/templates.git
+ ```
 
+2. Ensure that the schemas are generated:
+```bash
+cargo schema
+```
 2. Navigate to the project directory:
-   ```
-   cd templates/frontend
-   ```
+ ```
+ cd templates/frontend
+ ```
 
 3. Install the dependencies:
-   ```
-   pnpm install
-   ```
+ ```
+ pnpm install
+ ```
 
 ## Configuration
 
 1. Duplicate the `.env.example` file and rename it to `.env`:
-   ```
-   cp .env.example .env
-   ```
+ ```
+ cp .env.example .env
+ ```
 
 2. Open the `.env` file and ensure it contains the following:
-   ```
-   ABSTRACT_SUBGRAPH_URL=https://api.abstract.money/graphql
-   ```
+ ```
+ ABSTRACT_API_URL=https://api.abstract.money/graphql
+ ```
 
-   You can modify the values if needed.
+ You can modify the values if needed.
 
 ## Updating abstract.config.ts
 
@@ -88,11 +92,12 @@ Before running the code generation, follow these steps:
    ```typescript
    contracts: [
      {
-       name: "your_module_name", 
-       path: "../contracts/your_module_name/schema/", 
-       namespace: "your-namespace", 
+       name: "your_module_name",
+       path: "../contracts/your_module_name/schema/",
+       namespace: "your-namespace",
        version: "0.1.0",
-       moduleType: "adapter",
+       // moduleType: "adapter",
+       // moduleType: "app",
      }
    ],
    ```
@@ -103,13 +108,15 @@ Before running the code generation, follow these steps:
 
    c. Save the changes to the `abstract.config.ts` file.
 
-After completing these steps, you can proceed with running the code generation
-command that references the module-generated code.
+After completing these steps, you can proceed with running the code generation command that references the module-generated code.
 
 ## Code Generation
 
-This project uses code generation for type-safe interactions with smart
-contracts and GraphQL queries. To generate the necessary code, run:
+```admonish info
+Before generating code, make sure that you run the `just schema` command to generate the schemas.
+```
+
+This project uses code generation for type-safe interactions with smart contracts and GraphQL queries. To generate the necessary code, run:
 
 ```
 pnpm generate
