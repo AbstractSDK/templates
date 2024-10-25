@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@abstract-money/cli':
-    specifier: ^1.1.0
-    version: 1.1.0(esbuild@0.16.17)(typescript@5.0.2)
+    specifier: ^1.2.0
+    version: 1.2.0(esbuild@0.16.17)(typescript@5.0.2)
   '@abstract-money/core':
     specifier: ^3.0.0
     version: 3.0.0(graphql@16.9.0)(typescript@5.0.2)
@@ -105,8 +105,8 @@ packages:
       load-tsconfig: 0.2.5
     dev: false
 
-  /@abstract-money/cli@1.1.0(esbuild@0.16.17)(typescript@5.0.2):
-    resolution: {integrity: sha512-yqIQ8BzQgq1P2kDmpDUEleegSD5fcDmqsx3TVsnTwEjr89/H1ld+FlVRsXBqqJ6UdfQAXiO1uETGM2FYCwEPjA==}
+  /@abstract-money/cli@1.2.0(esbuild@0.16.17)(typescript@5.0.2):
+    resolution: {integrity: sha512-SoUHN20SvM4i8SFyW/U+KF48gy+abDQEqpme29Fs1zbVNYbsG6TD/+8xlmVxORulv5PtgbA/1Q22+ElRh8i2Qw==}
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.4'
