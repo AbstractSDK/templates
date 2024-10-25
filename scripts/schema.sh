@@ -9,8 +9,10 @@ for dir in contracts/*; do
       && out_dir="$SCHEMA_OUT_DIR/$(eval $package_dir)" \
       && schema_dir="$dir/schema" \
       && cargo schema \
-      && mkdir -p "schema/abstract" \
-      && cp "schema/module-schema.json" "schema/abstract" \
+      && if [ -f "schema/module-schema.json" ]; then
+             mkdir -p "schema/abstract"
+             cp "schema/module-schema.json" "schema/abstract"
+         fi \
       && mkdir -p $out_dir \
       && cp -r schema/* $out_dir)
 done
