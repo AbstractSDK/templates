@@ -32,7 +32,11 @@ impl TestEnv<MockBech32> {
         abs_client.set_balance(&sender, &coins(123, "ucosm"))?;
 
         // Publish the standalone
-        let publisher = abs_client.publisher_builder(namespace).build()?;
+        let publisher = abs_client
+            .account_builder()
+            .namespace(namespace)
+            .build()?
+            .publisher()?;
         publisher.publish_standalone::<{{standalone_name | upper_camel_case}}Interface<_>>()?;
 
         let standalone = publisher

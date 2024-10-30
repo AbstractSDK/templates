@@ -9,10 +9,9 @@ post = ["post-script.rhai"]
 include_app = { prompt = "Include App Module", default = true, type = "bool" }
 include_adapter = { prompt = "Include Adapter Module", default = true, type = "bool" }
 include_standalone = { prompt = "Include Standalone Module", default = true, type = "bool" }
+include_ibc_app = { prompt = "Include IBC App Module", default = true, type = "bool" }
 
 [conditional.'include_app'.placeholders]
-# App can have IBC
-with_ibc = { prompt = "Would you like to include IBC template in the app?", default = false, type = "bool" }
 app_name = { prompt = "Enter App Name", default = "my_app", type = "string" }
 
 [conditional.'include_adapter'.placeholders]
@@ -21,6 +20,9 @@ adapter_name = { prompt = "Enter Adapter Name", default = "my_adapter", type = "
 [conditional.'include_standalone'.placeholders]
 standalone_name = { prompt = "Enter Standalone Name", default = "my_standalone", type = "string" }
 
+[conditional.'include_ibc_app'.placeholders]
+ibc_app_name = { prompt = "Enter IBC App Name", default = "my_ibc_app", type = "string" }
+
 # Ignore files if not included
 [conditional.'!include_app']
 ignore = ["contracts/{{app_name}}"]
@@ -28,9 +30,5 @@ ignore = ["contracts/{{app_name}}"]
 ignore = ["contracts/{{adapter_name}}"]
 [conditional.'!include_standalone']
 ignore = ["contracts/{{standalone_name}}"]
-
-[conditional.'!with_ibc']
-ignore = [
-    "contracts/{{app_name}}/src/ibc",
-    "contracts/{{app_name}}/tests/interchain_integration.rs",
-]
+[conditional.'!include_ibc_app']
+ignore = ["contracts/{{ibc_app_name}}"]

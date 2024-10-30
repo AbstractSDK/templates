@@ -32,7 +32,11 @@ impl TestEnv<MockBech32> {
         abs_client.set_balance(&sender, &coins(123, "ucosm"))?;
 
         // Publish the app
-        let publisher = abs_client.publisher_builder(namespace).build()?;
+        let publisher = abs_client
+            .account_builder()
+            .namespace(namespace)
+            .build()?
+            .publisher()?;
         publisher.publish_app::<{{app_name | upper_camel_case}}Interface<_>>()?;
 
         let app = publisher

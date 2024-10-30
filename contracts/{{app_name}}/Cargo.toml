@@ -49,9 +49,6 @@ const_format = { workspace = true }
 # Dependencies for interface
 cw-orch = { workspace = true }
 abstract-interface = { workspace = true }
-{% if with_ibc %}
-cw-orch-interchain = { workspace = true }
-{% endif %}
 
 # Dependencies for bins
 clap = { workspace = true, optional = true, features = ["derive"] }
@@ -61,5 +58,5 @@ env_logger = { workspace = true, optional = true }
 
 [dev-dependencies]
 {{app_name | kebab_case}} = { workspace = true }
-abstract-client = { workspace = true{%if with_ibc %}, features = ["interchain"]{% endif %}  }
+abstract-client = { workspace = true }
 abstract-app = { workspace = true, features = ["test-utils"] }

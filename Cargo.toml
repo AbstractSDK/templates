@@ -28,7 +28,7 @@ abstract-standalone = { version = "0.24.1" }
 abstract-interface = { version = "0.24.1" }
 abstract-client = { version = "0.24.1" }
 cw-orch = { version = "0.27.0" }
-{% if with_ibc %}
+{% if include_ibc_app %}
 cw-orch-interchain = { version = "0.8.0" }
 {% endif %}
 
@@ -48,3 +48,8 @@ clap = { version = "4.5.19" }
 {% if include_standalone %}
 {{standalone_name | kebab_case}} = { path = "contracts/{{standalone_name}}" }
 {% endif %}
+
+[patch.crates-io]
+abstract-client = { git = "https://github.com/AbstractSDK/abstract.git", branch = "buckram/fix-abstract-client-fetch_or_build_account" }
+abstract-std = { git = "https://github.com/AbstractSDK/abstract.git", branch = "buckram/fix-abstract-client-fetch_or_build_account" }
+abstract-interface = { git = "https://github.com/AbstractSDK/abstract.git", branch = "buckram/fix-abstract-client-fetch_or_build_account" }

@@ -32,8 +32,10 @@ fn publish(networks: Vec<ChainInfo>) -> anyhow::Result<()> {
 
         // Get the [`Publisher`] that owns the namespace, otherwise create a new one and claim the namespace
         let publisher: Publisher<_> = abstract_client
-            .publisher_builder(adapter_namespace)
-            .build()?;
+            .account_builder()
+            .namespace(adapter_namespace)
+            .build()?
+            .publisher()?;
 
         if publisher.account().owner()? != chain.sender_addr() {
             panic!("The current sender can not publish to this namespace. Please use the wallet that owns the Account that owns the Namespace.")
