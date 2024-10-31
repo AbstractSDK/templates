@@ -31,7 +31,11 @@ impl TestEnv<MockBech32> {
         abs_client.set_balance(&sender, &coins(123, "ucosm"))?;
 
         // Publish the adapter
-        let publisher = abs_client.publisher_builder(namespace).build()?;
+        let publisher = abs_client
+            .account_builder()
+            .namespace(namespace)
+            .build()?
+            .publisher()?;
         publisher.publish_adapter::<{{adapter_name | upper_camel_case}}InstantiateMsg, {{adapter_name | upper_camel_case}}Interface<_>>(
             {{adapter_name | upper_camel_case}}InstantiateMsg {},
         )?;
@@ -67,8 +71,8 @@ fn update_config() -> anyhow::Result<()> {
     // Note that it's not a requirement to have it installed in this case
     let publisher_account = env
         .abs
-        .publisher_builder(Namespace::new({{project-name | shouty_snake_case}}_NAMESPACE).unwrap())
-        .build()?;
+        .fetch_account(Namespace::new({{project-name | shouty_snake_case}}_NAMESPACE).unwrap())?
+        .publisher()?;
 
     adapter.execute(
         &AdapterRequestMsg {
@@ -109,7 +113,7 @@ fn set_status() -> anyhow::Result<()> {
     let new_account = env
         .abs
         .account_builder()
-        .install_adapter::<{{adapter_name | upper_camel_case}}Interface<MockBech32>>()?
+        .install_adapter::<{{adapter_name | upper_camel_case}}Interface<MockBech32>>()
         .build()?;
 
     new_account.as_ref().execute_on_module(

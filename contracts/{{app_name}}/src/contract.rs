@@ -23,9 +23,7 @@ const APP: {{app_name | upper_camel_case}} = {{app_name | upper_camel_case}}::ne
     .with_execute(handlers::execute_handler)
     .with_query(handlers::query_handler)
     .with_migrate(handlers::migrate_handler)
-    .with_replies(&[(INSTANTIATE_REPLY_ID, replies::instantiate_reply)]){% if with_ibc %}
-    .with_ibc_callback(crate::ibc::ibc_callback)
-    .with_module_ibc(crate::ibc::receive_module_ibc){% endif %}
+    .with_replies(&[(INSTANTIATE_REPLY_ID, replies::instantiate_reply)])
     .with_dependencies(&[]);
 
 // Export handlers
@@ -37,7 +35,7 @@ abstract_app::cw_orch_interface!(APP, {{app_name | upper_camel_case}}, {{app_nam
 // TODO: add to docmuentation
 // https://linear.app/abstract-sdk/issue/ABS-414/add-documentation-on-dependencycreation-trait
 #[cfg(not(target_arch = "wasm32"))]
-impl<Chain: cw_orch::environment::CwEnv> abstract_interface::DependencyCreation
+impl<Chain: cw_orch::environment::CwEnv> abstract_app::abstract_interface::DependencyCreation
     for crate::{{app_name | upper_camel_case}}Interface<Chain>
 {
     type DependenciesConfig = cosmwasm_std::Empty;

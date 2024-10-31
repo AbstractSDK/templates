@@ -5,27 +5,24 @@
 //! ## Example
 //!
 //! ```bash
-//! $ just publish {{adapter_name | kebab_case}} uni-6 osmo-test-5
+//! $ just publish test-app uni-6 osmo-test-5
 //! ```
-use {{adapter_name | snake_case}}::{
-    contract::interface::{{adapter_name | upper_camel_case}}Interface, msg::{{adapter_name | upper_camel_case}}InstantiateMsg, {{adapter_name | shouty_snake_case}}_ID,
-};
+use ping_pong::PING_PONG_ID;
 
-use abstract_adapter::objects::namespace::Namespace;
+use abstract_app::objects::namespace::Namespace;
 use abstract_client::{AbstractClient, Publisher};
 use clap::Parser;
 use cw_orch::{anyhow, daemon::networks::parse_network, prelude::*, tokio::runtime::Runtime};
+use ping_pong::PingPongInterface;
 
 fn publish(networks: Vec<ChainInfo>) -> anyhow::Result<()> {
     // run for each requested network
     for network in networks {
         // Setup
         let rt = Runtime::new()?;
-        let chain = DaemonBuilder::new(network)
-            .handle(rt.handle())
-            .build()?;
+        let chain = DaemonBuilder::new(network).handle(rt.handle()).build()?;
 
-        let adapter_namespace = Namespace::from_id({{adapter_name | shouty_snake_case}}_ID)?;
+        let app_namespace = Namespace::from_id(PING_PONG_ID)?;
 
         // Create an [`AbstractClient`]
         let abstract_client: AbstractClient<Daemon> = AbstractClient::new(chain.clone())?;
@@ -33,7 +30,7 @@ fn publish(networks: Vec<ChainInfo>) -> anyhow::Result<()> {
         // Get the [`Publisher`] that owns the namespace, otherwise create a new one and claim the namespace
         let publisher: Publisher<_> = abstract_client
             .account_builder()
-            .namespace(adapter_namespace)
+            .namespace(app_namespace)
             .build()?
             .publisher()?;
 
@@ -41,10 +38,8 @@ fn publish(networks: Vec<ChainInfo>) -> anyhow::Result<()> {
             panic!("The current sender can not publish to this namespace. Please use the wallet that owns the Account that owns the Namespace.")
         }
 
-        // Publish the Adapter to the Abstract Platform
-        publisher.publish_adapter::<{{adapter_name | upper_camel_case}}InstantiateMsg, {{adapter_name | upper_camel_case}}Interface<Daemon>>(
-            {{adapter_name | upper_camel_case}}InstantiateMsg {},
-        )?;
+        // Publish the App to the Abstract Platform
+        publisher.publish_app::<PingPongInterface<Daemon>>()?;
     }
     Ok(())
 }
