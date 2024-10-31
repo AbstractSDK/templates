@@ -25,7 +25,6 @@ cw-asset = { version = "4.0.0" }
 abstract-app = { version = "0.24.1" }
 abstract-adapter = { version = "0.24.1" }
 abstract-standalone = { version = "0.24.1" }
-abstract-interface = { version = "0.24.1" }
 abstract-client = { version = "0.24.1" }
 cw-orch = { version = "0.27.0" }
 {% if include_ibc_app %}

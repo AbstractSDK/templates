@@ -1,0 +1,9 @@
+{
+  "name": "MyIbcApp",
+  "description": "IBC app description.",
+  "website": "",
+  "docs": "",
+  "type": "app",
+  "icon": "GiTrade",
+  "enabled": true
+}

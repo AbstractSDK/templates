@@ -35,7 +35,7 @@ abstract_app::cw_orch_interface!(APP, {{app_name | upper_camel_case}}, {{app_nam
 // TODO: add to docmuentation
 // https://linear.app/abstract-sdk/issue/ABS-414/add-documentation-on-dependencycreation-trait
 #[cfg(not(target_arch = "wasm32"))]
-impl<Chain: cw_orch::environment::CwEnv> abstract_interface::DependencyCreation
+impl<Chain: cw_orch::environment::CwEnv> abstract_app::abstract_interface::DependencyCreation
     for crate::{{app_name | upper_camel_case}}Interface<Chain>
 {
     type DependenciesConfig = cosmwasm_std::Empty;

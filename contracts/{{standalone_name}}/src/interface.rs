@@ -15,13 +15,13 @@ use crate::{
 )]
 pub struct {{standalone_name | upper_camel_case}}Interface;
 
-impl<Chain: cw_orch::environment::CwEnv> abstract_interface::DependencyCreation
+impl<Chain: cw_orch::environment::CwEnv> abstract_standalone::abstract_interface::DependencyCreation
     for {{standalone_name | upper_camel_case}}Interface<Chain>
 {
     type DependenciesConfig = cosmwasm_std::Empty;
 }
 
-impl<Chain: cw_orch::environment::CwEnv> abstract_interface::RegisteredModule
+impl<Chain: cw_orch::environment::CwEnv> abstract_standalone::abstract_interface::RegisteredModule
     for {{standalone_name | upper_camel_case}}Interface<Chain>
 {
     type InitMsg = <{{standalone_name | upper_camel_case}}Interface<Chain> as InstantiableContract>::InstantiateMsg;

@@ -1,39 +1,23 @@
 [package]
-name = "{{app_name | kebab_case}}"
-version = "0.0.1"
-authors = ["{{authors}}"]
+name = "ping-pong"
+version = "0.1.0"
 edition = "2021"
-homepage = ""
-documentation = ""
-repository = ""
-license = "GPL-3.0-or-later"
-keywords = ["cosmos", "cosmwasm", "abstractsdk"]
-resolver = "2"
-
-exclude = ["contract.wasm", "hash.txt"]
-
-[lib]
-crate-type = ["cdylib", "rlib"]
-
-[[bin]]
-name = "schema"
-required-features = ["schema"]
-
-[[bin]]
-name = "publish"
-required-features = ["daemon-bin"]
 
 [features]
 default = ["export"]
 export = []
 daemon-bin = [
-  "cw-orch/daemon",
-  "dep:clap",
-  "dep:abstract-client",
-  "dep:dotenv",
-  "dep:env_logger",
+    "cw-orch/daemon",
+    "dep:clap",
+    "dep:abstract-client",
+    "dep:dotenv",
+    "dep:env_logger",
 ]
 schema = ["abstract-app/schema"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 cosmwasm-std = { workspace = true }
@@ -44,18 +28,23 @@ thiserror = { workspace = true }
 schemars = { workspace = true }
 cw-asset = { workspace = true }
 abstract-app = { workspace = true }
+abstract-ibc-client = { version = "0.24.1", default-features = false }
 const_format = { workspace = true }
 
 # Dependencies for interface
 cw-orch = { workspace = true }
+abstract-interface = { workspace = true }
 
 # Dependencies for bins
 clap = { workspace = true, optional = true, features = ["derive"] }
-abstract-client = { workspace = true, optional = true }
+abstract-client = { workspace = true, features = [
+    "interchain",
+], optional = true }
 dotenv = { workspace = true, optional = true }
 env_logger = { workspace = true, optional = true }
 
 [dev-dependencies]
-{{app_name | kebab_case}} = { workspace = true }
-abstract-client = { workspace = true }
-abstract-app = { workspace = true, features = ["test-utils"] }
+cw-orch-interchain = { workspace = true, features = ["daemon"] }
+cw-orch = { workspace = true, features = ["daemon"] }
+abstract-client = { workspace = true, features = ["interchain"] }
+env_logger = "0.11"

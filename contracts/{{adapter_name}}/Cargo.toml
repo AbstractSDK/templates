@@ -48,7 +48,6 @@ const_format = { workspace = true }
 
 # Dependencies for interface
 cw-orch = { workspace = true }
-abstract-interface = { workspace = true }
 
 # Dependencies for bins
 clap = { workspace = true, optional = true, features = ["derive"] }
