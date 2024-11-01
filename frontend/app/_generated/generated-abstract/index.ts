@@ -49,8 +49,6 @@ import {
   useCw20BaseBalanceQuery,
 } from './cosmwasm-codegen/Cw20Base.react-query'
 
-import * as Cw20BaseTypes from './cosmwasm-codegen/Cw20Base.types'
-
 import {
   Cw20BaseQueryClient,
   Cw20BaseClient,
@@ -74,7 +72,10 @@ export const cw20Base = {
         typeof useCw20BaseDownloadLogoQuery<Cw20BaseTypes.DownloadLogoResponse>
       >[0],
       'client'
-    > & { contractAddress: string | undefined }) => {
+    > & {
+      contractAddress: string | undefined
+      chainName: string | undefined
+    }) => {
       const { data: cw20BaseQueryClient } = useModuleQueryClient({
         ...rest,
         Module: Cw20BaseQueryClient,
@@ -93,7 +94,10 @@ export const cw20Base = {
         typeof useCw20BaseMarketingInfoQuery<Cw20BaseTypes.MarketingInfoResponse>
       >[0],
       'client'
-    > & { contractAddress: string | undefined }) => {
+    > & {
+      contractAddress: string | undefined
+      chainName: string | undefined
+    }) => {
       const { data: cw20BaseQueryClient } = useModuleQueryClient({
         ...rest,
         Module: Cw20BaseQueryClient,
@@ -113,7 +117,10 @@ export const cw20Base = {
         typeof useCw20BaseAllAccountsQuery<Cw20BaseTypes.AllAccountsResponse>
       >[0],
       'client'
-    > & { contractAddress: string | undefined }) => {
+    > & {
+      contractAddress: string | undefined
+      chainName: string | undefined
+    }) => {
       const { data: cw20BaseQueryClient } = useModuleQueryClient({
         ...rest,
         Module: Cw20BaseQueryClient,
@@ -134,7 +141,10 @@ export const cw20Base = {
         typeof useCw20BaseAllSpenderAllowancesQuery<Cw20BaseTypes.AllSpenderAllowancesResponse>
       >[0],
       'client'
-    > & { contractAddress: string | undefined }) => {
+    > & {
+      contractAddress: string | undefined
+      chainName: string | undefined
+    }) => {
       const { data: cw20BaseQueryClient } = useModuleQueryClient({
         ...rest,
         Module: Cw20BaseQueryClient,
@@ -155,7 +165,10 @@ export const cw20Base = {
         typeof useCw20BaseAllAllowancesQuery<Cw20BaseTypes.AllAllowancesResponse>
       >[0],
       'client'
-    > & { contractAddress: string | undefined }) => {
+    > & {
+      contractAddress: string | undefined
+      chainName: string | undefined
+    }) => {
       const { data: cw20BaseQueryClient } = useModuleQueryClient({
         ...rest,
         Module: Cw20BaseQueryClient,
@@ -176,7 +189,10 @@ export const cw20Base = {
         typeof useCw20BaseAllowanceQuery<Cw20BaseTypes.AllowanceResponse>
       >[0],
       'client'
-    > & { contractAddress: string | undefined }) => {
+    > & {
+      contractAddress: string | undefined
+      chainName: string | undefined
+    }) => {
       const { data: cw20BaseQueryClient } = useModuleQueryClient({
         ...rest,
         Module: Cw20BaseQueryClient,
@@ -196,7 +212,10 @@ export const cw20Base = {
         typeof useCw20BaseMinterQuery<Cw20BaseTypes.MinterResponse>
       >[0],
       'client'
-    > & { contractAddress: string | undefined }) => {
+    > & {
+      contractAddress: string | undefined
+      chainName: string | undefined
+    }) => {
       const { data: cw20BaseQueryClient } = useModuleQueryClient({
         ...rest,
         Module: Cw20BaseQueryClient,
@@ -215,7 +234,10 @@ export const cw20Base = {
         typeof useCw20BaseTokenInfoQuery<Cw20BaseTypes.TokenInfoResponse>
       >[0],
       'client'
-    > & { contractAddress: string | undefined }) => {
+    > & {
+      contractAddress: string | undefined
+      chainName: string | undefined
+    }) => {
       const { data: cw20BaseQueryClient } = useModuleQueryClient({
         ...rest,
         Module: Cw20BaseQueryClient,
@@ -235,7 +257,10 @@ export const cw20Base = {
         typeof useCw20BaseBalanceQuery<Cw20BaseTypes.BalanceResponse>
       >[0],
       'client'
-    > & { contractAddress: string | undefined }) => {
+    > & {
+      contractAddress: string | undefined
+      chainName: string | undefined
+    }) => {
       const { data: cw20BaseQueryClient } = useModuleQueryClient({
         ...rest,
         Module: Cw20BaseQueryClient,
@@ -252,8 +277,13 @@ export const cw20Base = {
     useUploadLogo: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -271,6 +301,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -303,8 +334,13 @@ export const cw20Base = {
     useUpdateMarketing: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -322,6 +358,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -354,8 +391,13 @@ export const cw20Base = {
     useUpdateMinter: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -373,6 +415,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -405,8 +448,13 @@ export const cw20Base = {
     useMint: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -424,6 +472,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -456,8 +505,13 @@ export const cw20Base = {
     useBurnFrom: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -475,6 +529,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -507,8 +562,13 @@ export const cw20Base = {
     useSendFrom: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -526,6 +586,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -558,8 +619,13 @@ export const cw20Base = {
     useTransferFrom: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -577,6 +643,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -609,8 +676,13 @@ export const cw20Base = {
     useDecreaseAllowance: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -628,6 +700,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -660,8 +733,13 @@ export const cw20Base = {
     useIncreaseAllowance: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -679,6 +757,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -711,8 +790,13 @@ export const cw20Base = {
     useSend: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -730,6 +814,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -762,8 +847,13 @@ export const cw20Base = {
     useBurn: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -781,6 +871,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -813,8 +904,13 @@ export const cw20Base = {
     useTransfer: (
       {
         contractAddress,
+        chainName,
         sender,
-      }: { contractAddress: string | undefined; sender?: string | undefined },
+      }: {
+        contractAddress: string | undefined
+        chainName: string | undefined
+        sender?: string | undefined
+      },
       options?: Omit<
         UseMutationOptions<
           ExecuteResult,
@@ -832,6 +928,7 @@ export const cw20Base = {
         // error: cw20BaseClientError,
       } = useModuleClient({
         contractAddress,
+        chainName,
         Module: Cw20BaseClient,
       })
 
@@ -871,4 +968,5 @@ export const cw20Base = {
 export * from './cosmwasm-codegen/Cw20Base.client'
 export * from './cosmwasm-codegen/Cw20Base.message-builder'
 export * from './cosmwasm-codegen/Cw20Base.message-composer'
+import * as Cw20BaseTypes from './cosmwasm-codegen/Cw20Base.types'
 export { Cw20BaseTypes }

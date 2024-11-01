@@ -9,8 +9,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "../../components/card"
 import { Alert, AlertDescription, AlertTitle } from "../../components/alert"
 import { AlertCircle } from "lucide-react"
 
+const EXAMPLE_NEUTRONTESTNET_CW20 = "neutron1sj7exsjqgy460zky8t0u0cvjutu09fswqfq3trssq9z935dryl3snjeekf"
+
+
 export const CodegenContract: React.FC = () => {
-  const contractAddress = "juno1ju8k8sqwsqu5k6umrypmtyqu2wqcpnrkf4w4mntvl0javt4nma7s8lzgss"
   const chainId = appChain.chainId
 
   const { data: cosmosAccount } = useAccount({ chainId })
@@ -24,10 +26,12 @@ export const CodegenContract: React.FC = () => {
     },
   })
   const { data: accountsMetadata } = useAccountsMetadataGraphQLQuery({ accountIds: accounts })
-  const { data: balance, isLoading } = cw20Base.queries.useBalance({
-    contractAddress,
-    args: { address: accountsMetadata?.[0]?.proxy ?? "" },
-    options: { enabled: !!accountsMetadata?.[0]?.proxy && !!contractAddress },
+
+  const { data: exampleCw20Balance, isLoading } = cw20Base.queries.useBalance({
+    contractAddress: EXAMPLE_NEUTRONTESTNET_CW20,
+    chainName: appChain.chainName,
+    args: { address: accountsMetadata?.[0]?.address ?? "" },
+    options: { enabled: !!accountsMetadata?.[0]?.address && !!EXAMPLE_NEUTRONTESTNET_CW20 },
   })
 
   return (
@@ -38,11 +42,11 @@ export const CodegenContract: React.FC = () => {
       <CardContent>
         {isLoading ? (
           <p>Loading balance...</p>
-        ) : balance ? (
+        ) : exampleCw20Balance ? (
           <div className="bg-gray-100 p-3 rounded-md">
-            <h3 className="font-semibold mb-2">Balance for address: {accountsMetadata?.[0]?.proxy ?? ""}</h3>
+            <h3 className="font-semibold mb-2">Balance for address: {accountsMetadata?.[0]?.address ?? ""}</h3>
             <p>
-              <strong>Balance:</strong> {balance.balance}
+              <strong>Balance:</strong> {exampleCw20Balance.balance}
             </p>
           </div>
         ) : (

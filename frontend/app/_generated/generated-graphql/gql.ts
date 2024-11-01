@@ -14,7 +14,7 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 const documents = {
-    "\n  query AccountsMetadata($ids: [AccountIdWithChain!]!) {\n    accountsByIds(ids: $ids) {\n      id\n      info { name chainId description link }\n      proxy\n      manager\n      owner\n    }\n  }\n": types.AccountsMetadataDocument,
+    "\n  query AccountsMetadata($ids: [AccountIdWithChain!]!) {\n    accountsByIds(ids: $ids) {\n      id\n      info { name chainId description link }\n      address\n      owner\n      balances {\n        amount\n        denom\n      }\n    }\n  }\n": types.AccountsMetadataDocument,
 };
 
 /**
@@ -34,7 +34,7 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query AccountsMetadata($ids: [AccountIdWithChain!]!) {\n    accountsByIds(ids: $ids) {\n      id\n      info { name chainId description link }\n      proxy\n      manager\n      owner\n    }\n  }\n"): (typeof documents)["\n  query AccountsMetadata($ids: [AccountIdWithChain!]!) {\n    accountsByIds(ids: $ids) {\n      id\n      info { name chainId description link }\n      proxy\n      manager\n      owner\n    }\n  }\n"];
+export function gql(source: "\n  query AccountsMetadata($ids: [AccountIdWithChain!]!) {\n    accountsByIds(ids: $ids) {\n      id\n      info { name chainId description link }\n      address\n      owner\n      balances {\n        amount\n        denom\n      }\n    }\n  }\n"): (typeof documents)["\n  query AccountsMetadata($ids: [AccountIdWithChain!]!) {\n    accountsByIds(ids: $ids) {\n      id\n      info { name chainId description link }\n      address\n      owner\n      balances {\n        amount\n        denom\n      }\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

@@ -32,7 +32,7 @@ const poppins = Poppins({
 
 const abstractConfig = createConfig({
   provider: grazProvider,
-  apiUrl: process.env.NEXT_PUBLIC_ABSTRACT_API_URL || 'https://api.abstract.money/graphql',
+  apiUrl: process.env.NEXT_PUBLIC_ABSTRACT_API_URL || 'https://api-hackmos-2024.up.railway.app/',
 })
 
 export default function RootLayout({

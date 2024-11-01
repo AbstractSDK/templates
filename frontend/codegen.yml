@@ -1,4 +1,4 @@
-schema: "https://api.abstract.money/graphql" # This can be the API URL or the schema document
+schema: "https://api-hackmos-2024.up.railway.app/graphql" # This can be the API URL or the schema document
 # schema: "https://api.abstract.money/graphql"
 
 documents: ["./app/**/*.{tsx,ts}", "!./app/_generated/generated-graphql/**/*"]
