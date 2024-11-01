@@ -10,6 +10,10 @@ export const ACCOUNTS_METADATA_QUERY = gql(/* GraphQL */ `
       info { name chainId description link }
       address
       owner
+      balances {
+        amount
+        denom
+      }
     }
   }
 `)
@@ -18,12 +22,8 @@ export type UseAccountsMetadataArgs = {
   accountIds: AccountId[] | undefined
 }
 
-export function useAccountsMetadataGraphQLRequest() {
-  return useGraphQLRequest(ACCOUNTS_METADATA_QUERY)
-}
-
 export const useAccountsMetadataGraphQLQuery = ({ accountIds }: UseAccountsMetadataArgs) => {
-  const request = useAccountsMetadataGraphQLRequest()
+  const request = useGraphQLRequest(ACCOUNTS_METADATA_QUERY)
   return useQuery({
     queryFn: () => {
       if (!accountIds) throw new Error('Missing `accountIds`')

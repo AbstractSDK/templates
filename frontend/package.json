@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "generate": "npm run generate:graz && npm run generate:gql && npm run generate:abstract",
-    "generate:graz": "graz generate -g -M juno,osmosis -T junotestnet,osmosistestnet",
+    "generate:graz": "graz generate -g -M neutron,osmosis -T neutrontestnet,osmosistestnet",
     "generate:gql": "gql-gen --config codegen.yml",
     "generate:abstract": "abstract generate"
   },
