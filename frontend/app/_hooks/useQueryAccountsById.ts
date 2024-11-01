@@ -8,8 +8,7 @@ export const ACCOUNTS_METADATA_QUERY = gql(/* GraphQL */ `
     accountsByIds(ids: $ids) {
       id
       info { name chainId description link }
-      proxy
-      manager
+      address
       owner
     }
   }

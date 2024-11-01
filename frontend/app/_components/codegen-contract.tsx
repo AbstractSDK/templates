@@ -26,8 +26,9 @@ export const CodegenContract: React.FC = () => {
   const { data: accountsMetadata } = useAccountsMetadataGraphQLQuery({ accountIds: accounts })
   const { data: balance, isLoading } = cw20Base.queries.useBalance({
     contractAddress,
-    args: { address: accountsMetadata?.[0]?.proxy ?? "" },
-    options: { enabled: !!accountsMetadata?.[0]?.proxy && !!contractAddress },
+    chainName: appChain.chainName,
+    args: { address: accountsMetadata?.[0]?.address ?? "" },
+    options: { enabled: !!accountsMetadata?.[0]?.address && !!contractAddress },
   })
 
   return (
@@ -40,7 +41,7 @@ export const CodegenContract: React.FC = () => {
           <p>Loading balance...</p>
         ) : balance ? (
           <div className="bg-gray-100 p-3 rounded-md">
-            <h3 className="font-semibold mb-2">Balance for address: {accountsMetadata?.[0]?.proxy ?? ""}</h3>
+            <h3 className="font-semibold mb-2">Balance for address: {accountsMetadata?.[0]?.address ?? ""}</h3>
             <p>
               <strong>Balance:</strong> {balance.balance}
             </p>

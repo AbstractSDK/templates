@@ -21,3 +21,6 @@ schema/
 !/frontend/**
 
 build/
+
+.next
+# frontend/.next
