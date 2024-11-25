@@ -3,19 +3,17 @@
 import { useAccount } from "graz"
 import { useAccountsMetadataGraphQLQuery } from "../_hooks/useQueryAccountsById"
 import { useAccounts } from "@abstract-money/react"
-import { appChain } from "../../utils/chains"
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/card"
 import { Alert, AlertDescription, AlertTitle } from "../../components/alert"
 import { AlertCircle } from "lucide-react"
+import { APP_CHAIN } from '@/app/_lib/constants'
 
 export const QueryAbstractSubgraph: React.FC = () => {
-  const chainId = appChain.chainId
-
-  const { data: cosmosAccount } = useAccount({ chainId })
+  const { data: cosmosAccount } = useAccount({ chainId: APP_CHAIN.chainId })
   const { data: accounts } = useAccounts({
     args: {
       owner: cosmosAccount?.bech32Address ?? "",
-      chains: [appChain.chainName],
+      chains: [APP_CHAIN.chainName],
     },
     query: {
       enabled: !!cosmosAccount?.bech32Address,

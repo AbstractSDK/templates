@@ -2,21 +2,23 @@
 
 import { useCreateAccountMonarchy, useAccounts } from "@abstract-money/react"
 import { useAccount as graz_useAccount } from "graz"
-import { appChain } from "../../utils/chains"
-import { Button } from "../../components/button"
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/card"
-import { Alert, AlertDescription, AlertTitle } from "../../components/alert"
+import { Button } from '@/components/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/card'
+import { Alert, AlertDescription, AlertTitle } from '@/components/alert'
 import { AlertCircle } from "lucide-react"
 import { useEffect } from "react"
+import { APP_CHAIN } from '@/app/_lib/constants'
 
 
 export const CreateAbstractAccount: React.FC = () => {
-  const { chainName, chainId } = appChain
+  const { chainName, chainId } = APP_CHAIN
 
   const { data: cosmosAccount } = graz_useAccount({ chainId })
+
   const { mutate: createAccount, isLoading: isCreating, isSuccess: isAccountCreated } = useCreateAccountMonarchy({
     chainName,
   })
+
   const { data: accounts, isLoading: isLoadingAccounts, refetch: refetchAccounts } = useAccounts({
     args: {
       owner: cosmosAccount?.bech32Address ?? "",

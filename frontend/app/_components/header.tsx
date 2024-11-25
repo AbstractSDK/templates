@@ -2,8 +2,8 @@
 
 import { useActiveWalletType, useDisconnect, useSuggestChainAndConnect, useAccount } from "graz"
 import { useCallback } from "react"
-import { appChain } from "../../utils/chains"
-import { Button } from "../../components/button"
+import { Button } from '@/components/button'
+import { APP_CHAIN } from '@/app/_lib/constants'
 
 export const Header: React.FC = () => {
   const { disconnect } = useDisconnect()
@@ -15,13 +15,13 @@ export const Header: React.FC = () => {
     if (!walletType) return
 
     connect({
-      chainInfo: appChain,
+      chainInfo: APP_CHAIN,
       walletType: walletType.walletType,
     })
   }, [connect, walletType])
 
   const onDisconnect = useCallback(() => {
-    disconnect({ chainId: appChain.chainId })
+    disconnect({ chainId: APP_CHAIN.chainId })
   }, [disconnect])
 
   return (

@@ -7,6 +7,7 @@ import { AbstractProvider, createConfig } from '@abstract-money/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Inter, Poppins } from 'next/font/google'
 import "./globals.css";
+import { ABSTRACT_API_URL } from '@/app/_lib/constants'
 
 const client = new QueryClient({
   defaultOptions: {
@@ -32,7 +33,7 @@ const poppins = Poppins({
 
 const abstractConfig = createConfig({
   provider: grazProvider,
-  apiUrl: process.env.NEXT_PUBLIC_ABSTRACT_API_URL || 'https://api-hackmos-2024.up.railway.app/',
+  apiUrl: process.env.NEXT_PUBLIC_ABSTRACT_API_URL || ABSTRACT_API_URL
 })
 
 export default function RootLayout({
