@@ -1,18 +1,21 @@
 lockfileVersion: '6.0'
 
+overrides:
+  '@tanstack/react-query': ^4.36.1
+
 dependencies:
   '@abstract-money/cli':
     specifier: ^1.2.0
     version: 1.2.0(esbuild@0.16.17)(typescript@5.0.2)
   '@abstract-money/core':
-    specifier: ^3.2.0
-    version: 3.2.0(graphql@16.9.0)(typescript@5.0.2)
+    specifier: ^3.4.2
+    version: 3.4.2(graphql@16.9.0)(typescript@5.0.2)
   '@abstract-money/provider-graz':
-    specifier: ^9.0.0
-    version: 9.0.0(@abstract-money/core@3.2.0)(@abstract-money/react@2.2.0)(graz@0.1.25)(typescript@5.0.2)
+    specifier: ^11.0.2
+    version: 11.0.2(@abstract-money/core@3.4.2)(@abstract-money/react@2.3.5)(graz@0.1.25)(typescript@5.0.2)
   '@abstract-money/react':
-    specifier: ^2.2.0
-    version: 2.2.0(graphql@16.9.0)(react-dom@18.0.0)(react@18.0.0)(typescript@5.0.2)
+    specifier: ^2.3.5
+    version: 2.3.5(graphql@16.9.0)(react-dom@18.0.0)(react@18.0.0)(typescript@5.0.2)
   '@graphql-codegen/cli':
     specifier: ^5.0.3
     version: 5.0.3(@types/node@20.0.0)(graphql@16.9.0)(typescript@5.0.2)
@@ -29,8 +32,8 @@ dependencies:
     specifier: ^1.1.0
     version: 1.1.0(@types/react@18.0.0)(react@18.0.0)
   '@tanstack/react-query':
-    specifier: ^4.35.0
-    version: 4.35.0(react-dom@18.0.0)(react@18.0.0)
+    specifier: ^4.36.1
+    version: 4.36.1(react-dom@18.0.0)(react@18.0.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -146,21 +149,21 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@abstract-money/core@3.2.0(graphql@16.9.0)(typescript@5.0.2):
-    resolution: {integrity: sha512-8bo0lSD5Z+Dj8Itsi0lEaN5gli+EuPEmsU+UENSqQIQ4jLxKpSFwx48RewUDoN4h0khw3iPQoIaG1lx3h6dvVQ==}
+  /@abstract-money/core@3.4.2(graphql@16.9.0)(typescript@5.0.2):
+    resolution: {integrity: sha512-4NZ+tB/SS6xGNDu0ES65lUhKueueZzvT7a0Y+s6BvcE0g7tPOHQb0sjmIDJV336mMChA8sKkzjNbtNWXFylSYQ==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
       typescript:
         optional: true
     dependencies:
-      '@abstract-money/cosmwasm-utils': 0.3.1(typescript@5.0.2)
+      '@abstract-money/cosmwasm-utils': 0.3.5(typescript@5.0.2)
       '@chain-registry/types': 0.45.86
-      '@cosmjs/cosmwasm-stargate': 0.32.3
-      '@cosmjs/encoding': 0.32.3
-      '@cosmjs/proto-signing': 0.32.3
-      '@cosmjs/stargate': 0.32.3
-      '@cosmjs/tendermint-rpc': 0.32.3
+      '@cosmjs/cosmwasm-stargate': 0.32.4
+      '@cosmjs/encoding': 0.32.4
+      '@cosmjs/proto-signing': 0.32.4
+      '@cosmjs/stargate': 0.32.4
+      '@cosmjs/tendermint-rpc': 0.32.4
       '@rimbu/bimap': 1.1.1
       bech32: 2.0.0
       chain-registry: 1.69.8
@@ -183,8 +186,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@abstract-money/cosmwasm-utils@0.3.1(typescript@5.0.2):
-    resolution: {integrity: sha512-grbSW0cdkYH/HghlcsicQQG57ChY9NCzU6nFHxEFe77ehpA1buV4g304m5BYhXtZxgU2/tqvTCEiCnWEPAoW2g==}
+  /@abstract-money/cosmwasm-utils@0.3.5(typescript@5.0.2):
+    resolution: {integrity: sha512-6xEehaC5t7ZJLtXV1dTxGOzESanrDXE/y+lidCojvRbvQMhGrOD3L3Iya/LW+jI2NgsncN6xtOHc3KtAFdVVog==}
     engines: {node: '>=10'}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -202,25 +205,25 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@abstract-money/provider-graz@9.0.0(@abstract-money/core@3.2.0)(@abstract-money/react@2.2.0)(graz@0.1.25)(typescript@5.0.2):
-    resolution: {integrity: sha512-mqv++2fW0Sx6ReZGAygEne8ik7DX2TzPttdxzzEoHxqXLDFNWsfFqmO3u1QHBKBDBQx9CKDQxSUde2FGp4FYqg==}
+  /@abstract-money/provider-graz@11.0.2(@abstract-money/core@3.4.2)(@abstract-money/react@2.3.5)(graz@0.1.25)(typescript@5.0.2):
+    resolution: {integrity: sha512-d+VAALv/iOVU5JXfPN2E6+T77T4nS7mFb/4iKq1zvUQraPERnxs2C4AySHs/fH2XpKrbhHSqFsTFdD2Cp8IUsA==}
     peerDependencies:
-      '@abstract-money/core': 3.2.0
-      '@abstract-money/react': 2.2.0
+      '@abstract-money/core': 3.4.2
+      '@abstract-money/react': 2.3.5
       graz: ^0.1.19
       typescript: '>=5.0.4'
     peerDependenciesMeta:
       typescript:
         optional: true
     dependencies:
-      '@abstract-money/core': 3.2.0(graphql@16.9.0)(typescript@5.0.2)
-      '@abstract-money/react': 2.2.0(graphql@16.9.0)(react-dom@18.0.0)(react@18.0.0)(typescript@5.0.2)
+      '@abstract-money/core': 3.4.2(graphql@16.9.0)(typescript@5.0.2)
+      '@abstract-money/react': 2.3.5(graphql@16.9.0)(react-dom@18.0.0)(react@18.0.0)(typescript@5.0.2)
       graz: 0.1.25(@cosmjs/amino@0.31.3)(@cosmjs/cosmwasm-stargate@0.31.3)(@cosmjs/launchpad@0.27.1)(@cosmjs/proto-signing@0.31.3)(@cosmjs/stargate@0.31.3)(@cosmjs/tendermint-rpc@0.31.3)(@leapwallet/cosmos-social-login-capsule-provider@0.0.41)(@terra-money/feather.js@3.0.0-beta.3)(@types/react@18.0.0)(axios@0.27.2)(react-dom@18.0.0)(react@18.0.0)
       typescript: 5.0.2
     dev: false
 
-  /@abstract-money/react@2.2.0(graphql@16.9.0)(react-dom@18.0.0)(react@18.0.0)(typescript@5.0.2):
-    resolution: {integrity: sha512-vPZoTgpqHEZmrqvQpJpmWH/83Dfq8pznRWCgBb9gZh51cFaFZwnO5/aHgAp87tkRfrDk1dqgpopymwvtWw/DEw==}
+  /@abstract-money/react@2.3.5(graphql@16.9.0)(react-dom@18.0.0)(react@18.0.0)(typescript@5.0.2):
+    resolution: {integrity: sha512-9Hvg5aaZXlf9PoGGyIYL66Ylcjer1fmL3BeDtr2N249m2uSZ+beFofAd0+I4TUm28VbJEOIxAdPOJqbfp0t6AQ==}
     peerDependencies:
       react: '>=18.0.0'
       typescript: '>=5.0.4'
@@ -228,7 +231,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@abstract-money/core': 3.2.0(graphql@16.9.0)(typescript@5.0.2)
+      '@abstract-money/core': 3.4.2(graphql@16.9.0)(typescript@5.0.2)
       '@cosmjs/cosmwasm-stargate': 0.32.4
       '@cosmjs/encoding': 0.32.4
       '@cosmjs/proto-signing': 0.32.4
@@ -2176,25 +2179,6 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@cosmjs/cosmwasm-stargate@0.32.3:
-    resolution: {integrity: sha512-pqkt+QsLIPNMTRh9m+igJgIpzXXgn1BxmxfAb9zlC23kvsuzY/12un9M7iAdim1NwKXDFeYw46xC2YkprwQp+g==}
-    dependencies:
-      '@cosmjs/amino': 0.32.4
-      '@cosmjs/crypto': 0.32.4
-      '@cosmjs/encoding': 0.32.4
-      '@cosmjs/math': 0.32.4
-      '@cosmjs/proto-signing': 0.32.4
-      '@cosmjs/stargate': 0.32.4
-      '@cosmjs/tendermint-rpc': 0.32.4
-      '@cosmjs/utils': 0.32.4
-      cosmjs-types: 0.9.0
-      pako: 2.1.0
-    transitivePeerDependencies:
-      - bufferutil
-      - debug
-      - utf-8-validate
-    dev: false
-
   /@cosmjs/cosmwasm-stargate@0.32.4:
     resolution: {integrity: sha512-Fuo9BGEiB+POJ5WeRyBGuhyKR1ordvxZGLPuPosFJOH9U0gKMgcjwKMCgAlWFkMlHaTB+tNdA8AifWiHrI7VgA==}
     dependencies:
@@ -2269,14 +2253,6 @@ packages:
       readonly-date: 1.0.0
     dev: false
 
-  /@cosmjs/encoding@0.32.3:
-    resolution: {integrity: sha512-p4KF7hhv8jBQX3MkB3Defuhz/W0l3PwWVYU2vkVuBJ13bJcXyhU9nJjiMkaIv+XP+W2QgRceqNNgFUC5chNR7w==}
-    dependencies:
-      base64-js: 1.5.1
-      bech32: 1.1.4
-      readonly-date: 1.0.0
-    dev: false
-
   /@cosmjs/encoding@0.32.4:
     resolution: {integrity: sha512-tjvaEy6ZGxJchiizzTn7HVRiyTg1i4CObRRaTRPknm5EalE13SV+TCHq38gIDfyUeden4fCuaBVEdBR5+ti7Hw==}
     dependencies:
@@ -2343,17 +2319,6 @@ packages:
       long: 4.0.0
     dev: false
 
-  /@cosmjs/proto-signing@0.32.3:
-    resolution: {integrity: sha512-kSZ0ZUY0DwcRT0NcIn2HkadH4NKlwjfZgbLj1ABwh/4l0RgeT84QCscZCu63tJYq3K6auwqTiZSZERwlO4/nbg==}
-    dependencies:
-      '@cosmjs/amino': 0.32.4
-      '@cosmjs/crypto': 0.32.4
-      '@cosmjs/encoding': 0.32.4
-      '@cosmjs/math': 0.32.4
-      '@cosmjs/utils': 0.32.4
-      cosmjs-types: 0.9.0
-    dev: false
-
   /@cosmjs/proto-signing@0.32.4:
     resolution: {integrity: sha512-QdyQDbezvdRI4xxSlyM1rSVBO2st5sqtbEIl3IX03uJ7YiZIQHyv6vaHVf1V4mapusCqguiHJzm4N4gsFdLBbQ==}
     dependencies:
@@ -2410,25 +2375,6 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@cosmjs/stargate@0.32.3:
-    resolution: {integrity: sha512-OQWzO9YWKerUinPIxrO1MARbe84XkeXJAW0lyMIjXIEikajuXZ+PwftiKA5yA+8OyditVmHVLtPud6Pjna2s5w==}
-    dependencies:
-      '@confio/ics23': 0.6.8
-      '@cosmjs/amino': 0.32.4
-      '@cosmjs/encoding': 0.32.4
-      '@cosmjs/math': 0.32.4
-      '@cosmjs/proto-signing': 0.32.4
-      '@cosmjs/stream': 0.32.4
-      '@cosmjs/tendermint-rpc': 0.32.4
-      '@cosmjs/utils': 0.32.4
-      cosmjs-types: 0.9.0
-      xstream: 11.14.0
-    transitivePeerDependencies:
-      - bufferutil
-      - debug
-      - utf-8-validate
-    dev: false
-
   /@cosmjs/stargate@0.32.4:
     resolution: {integrity: sha512-usj08LxBSsPRq9sbpCeVdyLx2guEcOHfJS9mHGCLCXpdAPEIEQEtWLDpEUc0LEhWOx6+k/ChXTc5NpFkdrtGUQ==}
     dependencies:
@@ -2471,25 +2417,6 @@ packages:
       '@cosmjs/stream': 0.31.3
       '@cosmjs/utils': 0.31.3
       axios: 0.21.4
-      readonly-date: 1.0.0
-      xstream: 11.14.0
-    transitivePeerDependencies:
-      - bufferutil
-      - debug
-      - utf-8-validate
-    dev: false
-
-  /@cosmjs/tendermint-rpc@0.32.3:
-    resolution: {integrity: sha512-xeprW+VR9xKGstqZg0H/KBZoUp8/FfFyS9ljIUTLM/UINjP2MhiwncANPS2KScfJVepGufUKk0/phHUeIBSEkw==}
-    dependencies:
-      '@cosmjs/crypto': 0.32.4
-      '@cosmjs/encoding': 0.32.4
-      '@cosmjs/json-rpc': 0.32.4
-      '@cosmjs/math': 0.32.4
-      '@cosmjs/socket': 0.32.4
-      '@cosmjs/stream': 0.32.4
-      '@cosmjs/utils': 0.32.4
-      axios: 1.7.7
       readonly-date: 1.0.0
       xstream: 11.14.0
     transitivePeerDependencies:
@@ -4630,30 +4557,8 @@ packages:
       tslib: 2.8.0
     dev: false
 
-  /@tanstack/query-core@4.35.0:
-    resolution: {integrity: sha512-4GMcKQuLZQi6RFBiBZNsLhl+hQGYScRZ5ZoVq8QAzfqz9M7vcGin/2YdSESwl7WaV+Qzsb5CZOAbMBes4lNTnA==}
-    dev: false
-
   /@tanstack/query-core@4.36.1:
     resolution: {integrity: sha512-DJSilV5+ytBP1FbFcEJovv4rnnm/CokuVvrBEtW/Va9DvuJ3HksbXUJEpI0aV1KtuL4ZoO9AVE6PyNLzF7tLeA==}
-    dev: false
-
-  /@tanstack/react-query@4.35.0(react-dom@18.0.0)(react@18.0.0):
-    resolution: {integrity: sha512-LLYDNnM9ewYHgjm2rzhk4KG/puN2rdoqCUD+N9+V7SwlsYwJk5ypX58rpkoZAhFyZ+KmFUJ7Iv2lIEOoUqydIg==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-native: '*'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-    dependencies:
-      '@tanstack/query-core': 4.35.0
-      react: 18.0.0
-      react-dom: 18.0.0(react@18.0.0)
-      use-sync-external-store: 1.2.2(react@18.0.0)
     dev: false
 
   /@tanstack/react-query@4.36.1(react-dom@18.0.0)(react@18.0.0):
@@ -10542,7 +10447,7 @@ packages:
       '@keplr-wallet/types': 0.12.23
       '@leapwallet/cosmos-social-login-capsule-provider': 0.0.41(@cosmjs/encoding@0.32.4)(@cosmjs/proto-signing@0.31.3)(fp-ts@2.16.9)
       '@metamask/providers': 12.0.0
-      '@tanstack/react-query': 4.35.0(react-dom@18.0.0)(react@18.0.0)
+      '@tanstack/react-query': 4.36.1(react-dom@18.0.0)(react@18.0.0)
       '@terra-money/station-connector': 1.1.0(@cosmjs/amino@0.31.3)(@terra-money/feather.js@3.0.0-beta.3)(axios@0.27.2)
       '@vectis/extension-client': 0.7.2
       '@walletconnect/sign-client': 2.10.0
