@@ -17,7 +17,7 @@ use cosmwasm_std::{CosmosMsg, Deps, Uint128};
 /// Interact with your adapter in other modules.
 pub trait {{adapter_name | upper_camel_case}}Api: AccountIdentification + Dependencies + ModuleIdentification {
     /// Construct a new adapter interface.
-    fn {{adapter_name | snake_case}}<'a>(&'a self, deps: Deps<'a>) -> {{adapter_name | upper_camel_case}}<Self> {
+    fn {{adapter_name | snake_case}}<'a>(&'a self, deps: Deps<'a>) -> {{adapter_name | upper_camel_case}}<'a, Self> {
         {{adapter_name | upper_camel_case}} {
             base: self,
             deps,
