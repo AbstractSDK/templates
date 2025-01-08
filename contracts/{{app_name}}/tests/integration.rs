@@ -27,7 +27,7 @@ impl TestEnv<MockBech32> {
         let namespace = Namespace::new({{project-name | shouty_snake_case}}_NAMESPACE)?;
 
         // You can set up Abstract with a builder.
-        let abs_client = AbstractClient::builder(mock).build_mock()?;
+        let abs_client = AbstractClient::builder(mock).build()?;
         // The app supports setting balances for addresses and configuring ANS.
         abs_client.set_balance(&sender, &coins(123, "ucosm"))?;
 

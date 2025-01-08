@@ -58,5 +58,5 @@ env_logger = { workspace = true, optional = true }
 
 [dev-dependencies]
 {{adapter_name | kebab_case}} = { workspace = true }
-abstract-client = { workspace = true }
+abstract-client = { workspace = true, features = ["test-utils"] }
 abstract-adapter = { workspace = true, features = ["test-utils"] }

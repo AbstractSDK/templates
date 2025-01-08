@@ -60,7 +60,7 @@ impl<'a, T: {{adapter_name | upper_camel_case}}Api> {{adapter_name | upper_camel
 }
 
 /// Queries
-impl<'a, T: {{adapter_name | upper_camel_case}}Api> {{adapter_name | upper_camel_case}}<'a, T> {
+impl<T: {{adapter_name | upper_camel_case}}Api> {{adapter_name | upper_camel_case}}<'_, T> {
     /// Query your adapter via message type
     pub fn query<R: DeserializeOwned>(&self, query_msg: {{adapter_name | upper_camel_case}}QueryMsg) -> AbstractSdkResult<R> {
         let adapters = self.base.adapters(self.deps);
