@@ -58,5 +58,5 @@ env_logger = { workspace = true, optional = true }
 
 [dev-dependencies]
 {{standalone_name | kebab_case}} = { path = "." }
-abstract-client = { workspace = true }
+abstract-client = { workspace = true, features = ["test-utils"] }
 abstract-standalone = { workspace = true, features = ["test-utils"] }

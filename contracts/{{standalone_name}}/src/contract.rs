@@ -44,7 +44,7 @@ pub fn execute(
         {{standalone_name | upper_camel_case}}ExecuteMsg::Reset { count } => reset(deps, env, info, count, standalone),
         {{standalone_name | upper_camel_case}}ExecuteMsg::IbcCallback(msg) => {
             let binding = {{standalone_name | shouty_snake_case}};
-            let ibc_client = binding.ibc_client(deps.as_ref(), &env);
+            let ibc_client = binding.ibc_client(deps.as_ref());
 
             let ibc_client_addr = ibc_client.module_address()?;
             if info.sender.ne(&ibc_client_addr) {
